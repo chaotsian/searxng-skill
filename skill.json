@@ -1,0 +1,50 @@
+{
+  "name": "searxng-search",
+  "version": "1.0.0",
+  "description": "使用本地SearXNG实例进行隐私保护的联网搜索",
+  "author": "Your Name",
+  "license": "MIT",
+  "skills": {
+    "searxng_search": {
+      "name": "SearXNG搜索",
+      "description": "通过SearXNG搜索引擎获取实时信息，支持多种参数过滤",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "搜索关键词"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "返回结果数量限制",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 50
+          },
+          "language": {
+            "type": "string",
+            "description": "搜索语言代码（如zh、en、ja等）",
+            "default": "all"
+          },
+          "time_range": {
+            "type": "string",
+            "enum": ["day", "week", "month", "year"],
+            "description": "时间范围过滤",
+            "default": null
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["general", "images", "videos", "news", "map"]
+            },
+            "description": "搜索类别",
+            "default": ["general"]
+          }
+        },
+        "required": ["query"]
+      }
+    }
+  }
+}
